@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>My Favorite Movies</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body>
+        <h1>My Favorite Movies</h1>
+
+        <input type="text" id="movieName" placeholder="name">
+        <input type="number" id="movieRate" placeholder="rate" min="0" max="10">
+        <button onclick="addMovie()">add</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sortTable('name')">name <span id="nameArrow"> <i
+                                class="fa-solid fa-angles-down"></i></span></th>
+                    <th onclick="sortTable('rate')">rate <span id="rateArrow"> <i
+                                class="fa-solid fa-angles-down"></i></span></th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="movieTable">
+            </tbody>
+        </table>
+        <script src="index.js"></script> 
+    </body>
+
+    </html>

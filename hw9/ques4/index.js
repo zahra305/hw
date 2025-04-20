@@ -11,84 +11,77 @@ const cancelBtn = document.getElementById('cancelBtn');
 const submitBtn = document.getElementById('submitBtn');
 const timeDisplay = document.getElementById('timeDisplay');
 
-// نمایش زمان
+// نمایش زمان به صورت دقیقه و ثانیه
 function updateDisplay() {
-  const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
-  const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
-  const s = String(totalSeconds % 60).padStart(2, '0');
-  timeDisplay.textContent = `${h} : ${m} : ${s}`;
-}
-
-// تغییر دکمه استارت
-function setStartButton(running) {
-  startBtn.textContent = running ? 'Stop' : 'Start';
-  startBtn.style.backgroundColor = running ? 'red' : '#4CAF50';
-}
-
-// ریست کردن بلندگو
-function resetSpeaker() {
-  speaker.className = 'fa fa-volume-off';
+  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+  const seconds = String(totalSeconds % 60).padStart(2, '0');
+  timeDisplay.textContent = `${minutes}:${seconds}`;
 }
 
 // شروع تایمر
 function startTimer() {
-  clearInterval(timerInterval);
+  clearInterval(timerInterval); // متوقف کردن تایمر قبلی
   timerInterval = setInterval(() => {
     if (totalSeconds > 0) {
       totalSeconds--;
       updateDisplay();
     } else {
       clearInterval(timerInterval);
-      speaker.className = 'fa fa-volume-up red';
+      speaker.className = 'fa fa-volume-up red'; // صدای هشدار
       isRunning = false;
-      setStartButton(false);
+      startBtn.textContent = 'Start';
     }
   }, 1000);
 }
 
-// رویدادهای دکمه‌ها
-submitBtn.addEventListener('click', () => {
-  totalSeconds = Math.round(parseFloat(minuteInput.value) * 60);
-  updateDisplay();
-  isRunning = false;
-  setStartButton(false);
-  resetSpeaker();
-});
-
+// دکمه Start/Stop
 startBtn.addEventListener('click', () => {
   if (!isRunning && totalSeconds > 0) {
     startTimer();
     isRunning = true;
-    setStartButton(true);
+    startBtn.textContent = 'Stop';
+    startBtn.style.background="red"
   } else {
-    clearInterval(timerInterval);
+    clearInterval(timerInterval); // متوقف کردن تایمر
     isRunning = false;
-    setStartButton(false);
+    startBtn.textContent = 'Start';
+    startBtn.style.background="#4CAF50"
   }
 });
 
+// دکمه Cancel
 cancelBtn.addEventListener('click', () => {
-  clearInterval(timerInterval);
-  totalSeconds = 0;
-  isRunning = false;
+  clearInterval(timerInterval); // قطع تایمر
+  totalSeconds = 0; // ریست کردن زمان
   updateDisplay();
-  setStartButton(false);
-  resetSpeaker();
+  isRunning = false;
+  startBtn.textContent = 'Start';
+  speaker.className = 'fa fa-volume-off'; // ریست کردن آیکون صدا
 });
 
+// ثبت زمان دلخواه
+submitBtn.addEventListener('click', () => {
+  totalSeconds = parseFloat(minuteInput.value) * 60; // تبدیل دقیقه به ثانیه
+  updateDisplay();
+  isRunning = false;
+  startBtn.textContent = 'Start';
+  speaker.className = 'fa fa-volume-off'; // ریست کردن آیکون صدا
+});
+
+// انتخاب زمان پیش‌فرض
 presetSelect.addEventListener('change', () => {
   const value = presetSelect.value;
   if (value === 'custom') {
-    customWrapper.style.display = 'inline-block';
+    customWrapper.style.display = 'inline-block'; // نمایش ورودی زمان دلخواه
   } else {
-    customWrapper.style.display = 'none';
-    totalSeconds = parseInt(value) * 60;
+    customWrapper.style.display = 'none'; // مخفی کردن ورودی زمان دلخواه
+    totalSeconds = parseInt(value) * 60; // تنظیم زمان بر اساس انتخاب کاربر
     updateDisplay();
     isRunning = false;
-    setStartButton(false);
-    resetSpeaker();
+    startBtn.textContent = 'Start';
+    speaker.className = 'fa fa-volume-off'; // ریست کردن آیکون صدا
   }
 });
 
-// نمایش اولیه
-customWrapper.style.display = 'inline-block';
+// نمایش زمان اولیه
+updateDisplay();

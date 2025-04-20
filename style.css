@@ -1,0 +1,119 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    height: 100vh;
+    align-items: center;
+
+}
+
+.timer {
+    width: 25%;
+    text-align: left;
+
+}
+
+h2 {
+    font-size: 50px;
+
+}
+
+#timeDisplay {
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.underline {
+    border-bottom: 2px solid rgb(222, 221, 221);
+
+
+}
+
+#speaker {
+    font-size: 30px;
+    color: rgb(77, 76, 76);
+    margin-left: 35px;
+    padding: 12px 50px;
+    border: 2px solid rgb(160, 158, 158);
+    border-radius: 6px;
+
+}
+
+#presetSelect {
+    width: 300px;
+    font-size: 35px;
+    padding: 8px;
+    color: gray;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+#speaker.red {
+    color: white;
+    background-color: red;
+    padding: 12px 40px;
+}
+
+button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 35px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#startBtn {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    margin-left: 160px;
+    padding: 10px 40px;
+}
+
+#cancelBtn {
+    background-color: white;
+    color: grey;
+    border: 2px solid rgb(152, 152, 152);
+    padding: 10px 20px;
+}
+
+input {
+    font-size: 20px;
+    padding: 18px 30px 18px 30px;
+    margin-left: 50px;
+    border-radius: 6px;
+    border: 3px solid black;
+}
+
+label {
+    font-size: 30px;
+}
+
+#submitBtn {
+    font-size: 25px;
+    border: 2px solid rgb(152, 152, 152);
+    padding: 15px 23px 15px 23px;
+    margin-left: 40px;
+    background-color: white;
+    color: gray;
+
+}
+
+#customInputWrapper {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+input[type=number] {
+    width: 80px;
+}
+
+input::placeholder {
+
+    color: rgb(182, 181, 181);
+}

@@ -63,7 +63,7 @@ cancelBtn.addEventListener('click', () => {
 
 // ثبت زمان 
 submitBtn.addEventListener('click', () => {
-  totalSeconds = parseFloat(minuteInput.value) * 60; 
+  totalSeconds =minuteInput.value* 60; 
   updateDisplay();
   isRunning = false;
   startBtn.textContent = 'Start';

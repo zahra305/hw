@@ -53,35 +53,35 @@ startBtn.addEventListener('click', () => {
 
 // دکمه Cancel
 cancelBtn.addEventListener('click', () => {
-  clearInterval(timerInterval); // قطع تایمر
-  totalSeconds = 0; // ریست کردن زمان
+  clearInterval(timerInterval); 
+  totalSeconds = 0; 
   updateDisplay();
   isRunning = false;
   startBtn.textContent = 'Start';
-  speaker.className = 'fa fa-volume-off'; // ریست کردن آیکون صدا
+  speaker.className = 'fa fa-volume-off';
 });
 
-// ثبت زمان دلخواه
+// ثبت زمان 
 submitBtn.addEventListener('click', () => {
-  totalSeconds = parseFloat(minuteInput.value) * 60; // تبدیل دقیقه به ثانیه
+  totalSeconds = parseFloat(minuteInput.value) * 60; 
   updateDisplay();
   isRunning = false;
   startBtn.textContent = 'Start';
-  speaker.className = 'fa fa-volume-off'; // ریست کردن آیکون صدا
+  speaker.className = 'fa fa-volume-off'; 
 });
 
 // انتخاب زمان پیش‌فرض
 presetSelect.addEventListener('change', () => {
   const value = presetSelect.value;
   if (value === 'custom') {
-    customWrapper.style.display = 'inline-block'; // نمایش ورودی زمان دلخواه
+    customWrapper.style.display = 'inline-block'; 
   } else {
-    customWrapper.style.display = 'none'; // مخفی کردن ورودی زمان دلخواه
-    totalSeconds = parseInt(value) * 60; // تنظیم زمان بر اساس انتخاب کاربر
+    customWrapper.style.display = 'none'; 
+    totalSeconds = parseInt(value) * 60; 
     updateDisplay();
     isRunning = false;
     startBtn.textContent = 'Start';
-    speaker.className = 'fa fa-volume-off'; // ریست کردن آیکون صدا
+    speaker.className = 'fa fa-volume-off'; 
   }
 });
 

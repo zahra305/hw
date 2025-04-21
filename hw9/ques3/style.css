@@ -1,9 +1,10 @@
-body {
-    margin: 0;
-    padding: 0;
+
+    
+    body {
+    
     font-family: Arial, sans-serif;
     background: #a6a5a5;
-    box-sizing: border-box;
+   
 
 }
 
@@ -115,6 +116,7 @@ body {
 
 /* اسکرول */
 .steps-container {
+  
     display: flex;
     width: 90%;
     overflow: hidden;

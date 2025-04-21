@@ -30,7 +30,7 @@ function updateStepsUI() {
 }
 
 function nextStep() {
-    if (currentStep < stepContents.length - 1) {
+    if (currentStep < stepContents.length ) {
         currentStep++;
         updateScroll();
     }
@@ -48,8 +48,8 @@ function Reset() {
     updateScroll();
 }
 
-// Event delegation برای همه دکمه‌ها
-document.body.addEventListener('click', function (e) {
+// برای همه دکمه‌ها
+document.addEventListener('click', function (e) {
     if (e.target.classList.contains('btn-next')) {
         nextStep();
         addClickEffect(e.target);

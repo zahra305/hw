@@ -11,25 +11,27 @@ const cancelBtn = document.getElementById('cancelBtn');
 const submitBtn = document.getElementById('submitBtn');
 const timeDisplay = document.getElementById('timeDisplay');
 
-// نمایش زمان به صورت دقیقه و ثانیه
+
 function updateDisplay() {
-  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
   const seconds = String(totalSeconds % 60).padStart(2, '0');
-  timeDisplay.textContent = `${minutes}:${seconds}`;
+  timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
 }
 
 // شروع تایمر
 function startTimer() {
-  clearInterval(timerInterval); // متوقف کردن تایمر قبلی
+  clearInterval(timerInterval); 
   timerInterval = setInterval(() => {
     if (totalSeconds > 0) {
       totalSeconds--;
       updateDisplay();
     } else {
       clearInterval(timerInterval);
-      speaker.className = 'fa fa-volume-up red'; // صدای هشدار
+      speaker.className = 'fa fa-volume-up red';
       isRunning = false;
       startBtn.textContent = 'Start';
+      startBtn.style.background="#4CAF50"
     }
   }, 1000);
 }
